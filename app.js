@@ -14,11 +14,23 @@ db.authenticate().then(() => console.log('database connected')).catch((err) => {
 
 const app = express()
 
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+
+
 app.get('/', (req, res) => {
   res.send('INDEX')
 
 })
 
+
+//views
+
+//set static folder
+
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 //routes
 
