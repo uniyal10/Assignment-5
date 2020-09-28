@@ -15,9 +15,14 @@ router.get('/', async (req, res) => {
   }
 })
 
+//add gig form
+
+router.get('/add', function (req, res) {
+  res.render('add')
+})
 
 //add
-router.get('/add', (req, res) => {
+router.post('/add', (req, res) => {
   const data = {
     title: 'looking for a react developer',
     technologies: 'react',

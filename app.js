@@ -20,9 +20,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 
-app.get('/', (req, res) => {
-  res.send('INDEX')
-})
+
 
 
 //views
@@ -35,6 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 //routes
 
 app.use('/gigs', require('./routes/gigs'))
+
+app.get('/', (req, res) => {
+  res.render('index', { layout: 'landing' })
+})
+
 
 
 const PORT = process.env.PORT || 5000
