@@ -4,6 +4,9 @@ const router = express.Router()
 const db = require('../config/database')
 const Gig = require('../models/Gigs')
 
+const Sequelize = require('sequelize')
+const op = Sequelize.Op
+
 
 router.get('/', async (req, res) => {
   try {
@@ -74,5 +77,22 @@ router.post('/add', (req, res) => {
 
 
 })
+
+
+
+router.get('/search', async (req, res) => {
+  let { term } = req.query
+  term = term.toLocaleLowerCase()
+  try {
+    const data = await Gig.findAll({ where: { technologies: { [op.like]: '%' + term + '%' } } })
+    res.render('gigs', { gigs: data })
+  }
+  catch {
+    console.log('something wrong')
+  }
+
+})
+
+
 
 module.exports = router
