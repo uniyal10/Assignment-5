@@ -5,14 +5,14 @@ const db = require('../config/database')
 const Gig = require('../models/Gigs')
 
 
-router.get('/', (req, res) => {
-  Gig.findAll()
-    .then(gigs => {
-      res.render('gigs', {
-        gigs
-      })
-    })
-    .catch(err => console.log(err))
+router.get('/', async (req, res) => {
+  try {
+    const data = await Gig.findAll()
+    res.render('gigs', { gigs: data })
+  }
+  catch {
+    console.log('something wrong')
+  }
 })
 
 

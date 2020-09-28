@@ -7,6 +7,7 @@ const path = require('path')
 const db = require('./config/database')
 
 
+
 db.authenticate().then(() => console.log('database connected')).catch((err) => {
   console.log(err)
 })
@@ -21,7 +22,6 @@ app.set('view engine', 'handlebars')
 
 app.get('/', (req, res) => {
   res.send('INDEX')
-
 })
 
 
