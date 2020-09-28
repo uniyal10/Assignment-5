@@ -23,26 +23,55 @@ router.get('/add', function (req, res) {
 
 //add
 router.post('/add', (req, res) => {
-  const data = {
-    title: 'looking for a react developer',
-    technologies: 'react',
-    budget: '$40',
-    description: 'lorem ipsum Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes',
-    contact_email: 'user@gmail.com'
+
+  let { title, technologies, budget, description, contact_email } = req.body
+
+  let errors = []
+
+  if (!title) {
+    errors.push({ text: 'Please add a title' })
+  }
+  if (!technologies) {
+    errors.push({ text: 'Please add a technology' })
+  } if (!description) {
+    errors.push({ text: 'Please add a description' })
+  } if (!contact_email) {
+    errors.push({ text: 'Please add a contact email' })
   }
 
-  let { title, technologies, budget, description, contact_email } = data
+  if (errors.length > 0) {
+    res.render('add', {
+      errors,
+      title,
+      technologies,
+      budget,
+      description,
+      contact_email
+
+    })
+  } else {
+    if (!budget) {
+      budget = 'Unknown'
+    }
+    else {
+      budget = `$${budget}`
+    }
+
+    technologies = technologies.toLowerCase().replace(/, /g, ',')
+    Gig.create({
+      title,
+      technologies,
+      description,
+      budget,
+      contact_email
+    }).then(gig => res.redirect('/gigs'))
+      .catch(err => console.log(err))
+  }
+
 
   //insert
 
-  Gig.create({
-    title,
-    technologies,
-    description,
-    budget,
-    contact_email
-  }).then(gig => res.redirect('/gigs'))
-    .catch(err => console.log(err))
+
 
 })
 

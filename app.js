@@ -21,6 +21,7 @@ app.set('view engine', 'handlebars')
 
 
 
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 //views
