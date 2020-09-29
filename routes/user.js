@@ -33,4 +33,14 @@ router.post('/:id', (req, res) => {
   ).then(data => console.log(data)).catch(err => console.log(err))
 })
 
+
+
+router.delete('/:id', (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(data => console.log(data)).catch(err => console.log(err))
+})
+
 module.exports = router
