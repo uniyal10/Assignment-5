@@ -2,10 +2,10 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const path = require('path')
+const cors = require('cors')
 
 
 const db = require('./config/database')
-
 
 db.authenticate().then(() => console.log('database connected')).catch((err) => {
   console.log(err)
@@ -13,16 +13,20 @@ db.authenticate().then(() => console.log('database connected')).catch((err) => {
 
 
 const app = express()
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   res.send('INDEX')
-
 })
+
+
 
 
 //routes
 
-app.use('/gigs', require('./routes/gigs'))
+app.use('/user', require('./routes/user'))
 
 
 const PORT = process.env.PORT || 5000
