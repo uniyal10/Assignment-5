@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
-module.exports = new Sequelize('Angular', 'postgres', '123', {
+module.exports = new Sequelize('users', 'postgres', '123', {
   host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,

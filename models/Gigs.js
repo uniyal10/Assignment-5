@@ -33,21 +33,28 @@ const { Sequelize, DataTypes } = require('sequelize');
 // const sequelize = new Sequelize('sqlite::memory:');
 const db = require('../config/database')
 
-const Gig = db.define('user', {
-  title: {
+const Gig = db.define('users', {
+  firstname: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  technologies: {
+  middlename: {
     type: DataTypes.STRING
   },
-  description: {
+  lastname: {
     type: DataTypes.STRING
   },
-  budget: {
+  email: {
     type: DataTypes.STRING
   },
-  contact_email: {
+  phonenumber: {
+    type: DataTypes.INTEGER
+  },
+
+  role: {
+    type: DataTypes.STRING
+  },
+  address: {
     type: DataTypes.STRING
   }
 }, {
