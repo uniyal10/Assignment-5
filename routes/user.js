@@ -8,16 +8,7 @@ router.get('/', getUser)
 
 
 router.get('/add', (req, res) => {
-  const user = {
-    id: 4,
-    firstname: 'kapil',
-    middlename: "ranjan",
-    lastname: 'uniyal',
-    email: 'uniyal1001@gmail.com',
-    phonenumber: 7988476924,
-    role: 'developer',
-    address: 'mystic falls'
-  }
+  const user = req.body
   User.create(user).then(data => console.log(data)).catch(err => console.log(err))
 })
 

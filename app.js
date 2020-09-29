@@ -3,7 +3,8 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const path = require('path')
 const cors = require('cors')
-
+const fs = require('fs')
+const User = require('./models/User')
 
 const db = require('./config/database')
 
@@ -17,8 +18,19 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-  res.send('INDEX')
+app.get('/load', (req, res) => {
+  const data = fs.readFileSync('./data.json', 'utf-8')
+  const actualData = JSON.parse(data)
+  actualData.map(async user => {
+    try {
+      await User.create(user)
+    }
+    catch {
+      res.send('something wrong')
+    }
+
+  })
+  res.send('data loaded sucessfully')
 })
 
 

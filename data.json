@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "firstname": "Leanne",
+    "middlename": "",
+    "lastname": "Graham",
+    "email": "Sincere@april.biz",
+    "phonenumber": "1-770-736-8031",
+    "role": "senior architect",
+    "address": "Kulas Light Apt. 556 Gwenborough"
+  },
+  {
+    "id": 2,
+    "firstname": "Ervin",
+    "middlename": "",
+    "lastname": "Howell",
+    "email": "Shanna@melissa.tv",
+    "phonenumber": "010-692-6593",
+    "role": "senior architect",
+    "address": "Victor Plains Suite 879 Wisokyburgh"
+  },
+  {
+    "id": 3,
+    "firstname": "jhon",
+    "middlename": "",
+    "lastame": "doe",
+    "email": "jhon.doe@gmail.com",
+    "phonenumber": "1234567891",
+    "role": "senior architect",
+    "address": "central park new york"
+  },
+  {
+    "id": 4,
+    "firstame": "Clementine",
+    "middlename": "",
+    "lastname": "Bauch",
+    "email": "Nathan@yesenia.net",
+    "phonenumber": "1-463-123-4447",
+    "role": "senior architect",
+    "address": "Douglas Extension Suite 847 McKenziehaven"
+  }
+]
